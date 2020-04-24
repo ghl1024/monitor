@@ -47,9 +47,9 @@ function check_result
         cd $mountpath && timeout $TIMESECsmall /usr/bin/rm -f cfs_monitor."$KEY"
 
         if [ "$result" == "$MD5" ];then
-            cd /var/lib/node_exporter/textfile && echo "nfs_monitor_status{path=$mountpath} 0" >> cfs_monitor.prom
+            cd /var/lib/node_exporter/textfile && echo "nfs_monitor_status{path=\"$mountpath\"} 0" >> cfs_monitor.prom
         else
-            cd /var/lib/node_exporter/textfile && echo "nfs_monitor_status{path=$mountpath} 1" >> cfs_monitor.prom
+            cd /var/lib/node_exporter/textfile && echo "nfs_monitor_status{path=\"$mountpath\"} 1" >> cfs_monitor.prom
         fi
     done
 }
@@ -65,9 +65,9 @@ function check_performance
         local time_result=$((End_time - Begin_time))
 
         if [ "$(md5sum "$mountpath"/cfs_monitor.performance."$KEY" |grep -c $MD5)" -eq 1 ];then
-            cd /var/lib/node_exporter/textfile && echo -e "cfs_monitor_100mb{path=$mountpath} 0\ncfs_monitor_time_100mb{path=$mountpath} $time_result" >> cfs_monitor.prom
+            cd /var/lib/node_exporter/textfile && echo -e "cfs_monitor_100mb{path=\"$mountpath\"} 0\ncfs_monitor_time_100mb{path=\"$mountpath\"} $time_result" >> cfs_monitor.prom
         else
-            cd /var/lib/node_exporter/textfile && echo -e "cfs_monitor_100mb{path=$mountpath} -1\ncfs_monitor_time_100mb{path=$mountpath} $time_result" >> cfs_monitor.prom
+            cd /var/lib/node_exporter/textfile && echo -e "cfs_monitor_100mb{path=\"$mountpath\"} -1\ncfs_monitor_time_100mb{path=\"$mountpath\"} $time_result" >> cfs_monitor.prom
         fi
         rm -f "$mountpath"/cfs_monitor.performance."$KEY"
     done
