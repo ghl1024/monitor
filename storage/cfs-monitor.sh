@@ -22,7 +22,7 @@ readonly KEY=$((RANDOM))
 function check_prometheus
 {
     mkdir -p  /var/lib/node_exporter/textfile
-    cd /var/lib/node_exporter/textfile && touch cfs_monitor.prom && chmod 755 cfs_monitor.prom && echo > cfs_monitor.prom
+    touch /var/lib/node_exporter/textfile/cfs_monitor.prom && chmod 755 /var/lib/node_exporter/textfile/cfs_monitor.prom && echo > /var/lib/node_exporter/textfile/cfs_monitor.prom
 }
 
 function check_cfs
