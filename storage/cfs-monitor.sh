@@ -69,7 +69,7 @@ function check_performance
         else
             echo -e "cfs_monitor_100mb{path=$mountpath} -1\ncfs_monitor_time_100mb{path=$mountpath} $time_result" >> /var/lib/node_exporter/textfile/cfs_monitor.prom
         fi
-        rm -f "$mountpath"/cfs_monitor.performance."$KEY"
+        timeout $TIMESECsmall /usr/bin/rm -f  "$mountpath"/cfs_monitor.performance."$KEY"
     done
 }
 
