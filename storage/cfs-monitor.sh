@@ -60,7 +60,7 @@ function check_performance
 {
     for mountpath in ${Mountlist[@]};do
         local Begin_time=$(date +%s%N)
-        timeout $TIMESEClarge dd if=/dev/zero of=$mountpath/cfs_monitor.performance."$KEY" bs=1MB count=100 2>/dev/null
+        timeout $TIMESEClarge dd if=/dev/zero of=$mountpath/cfs_monitor.performance."$KEY" bs=1MB count=100 conv=fsync 2>/dev/null
         local End_time=$(date +%s%N)
         local time_result=$((End_time - Begin_time))
 
