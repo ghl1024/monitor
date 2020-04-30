@@ -11,9 +11,9 @@ set -x
 
 readonly MD5="0f86d7c5a6180cf9584c1d21144d85b0"
 #定义的是命令执行的超时时间
-readonly TIMESECsmall="3"
+readonly TIMESECsmall="5"
 readonly TIMESEClarge="20"
-Mountlist=("/disk/cfs-generic" "/disk/cfs-capacity" "/disk/ssd" "/disk/hdd")
+Mountlist=("/disk/cfs-generic-A" "/disk/cfs-generic-B" "/disk/ssd" "/disk/hdd")
 
 #文件名的随机后缀变量
 readonly KEY=$((RANDOM))
@@ -22,7 +22,7 @@ readonly KEY=$((RANDOM))
 function check_prometheus
 {
     mkdir -p  /var/lib/node_exporter/textfile
-    cd /var/lib/node_exporter/textfile && touch cfs_monitor.prom && chmod 755 cfs_monitor.prom && echo > cfs_monitor.prom
+    touch /var/lib/node_exporter/textfile/cfs_monitor.prom && chmod 755 /var/lib/node_exporter/textfile/cfs_monitor.prom && echo -n > /var/lib/node_exporter/textfile/cfs_monitor.prom
 }
 
 function check_cfs
@@ -40,11 +40,11 @@ function check_result
 {
     for mountpath in ${Mountlist[@]};do
     
-        cd $mountpath && timeout $TIMESECsmall echo $MD5 > cfs_monitor."$KEY"
+        timeout $TIMESECsmall echo $MD5 > $mountpath/cfs_monitor."$KEY"
 
         local result=$( timeout $TIMESECsmall cat $mountpath/cfs_monitor."$KEY")
 
-        cd $mountpath && timeout $TIMESECsmall /usr/bin/rm -f cfs_monitor."$KEY"
+        timeout $TIMESECsmall /usr/bin/rm -f $mountpath/cfs_monitor."$KEY"
 
         if [ "$result" == "$MD5" ];then
             cd /var/lib/node_exporter/textfile && echo "nfs_monitor_status{path=\"$mountpath\"} 0" >> cfs_monitor.prom
@@ -69,7 +69,7 @@ function check_performance
         else
             cd /var/lib/node_exporter/textfile && echo -e "cfs_monitor_100mb{path=\"$mountpath\"} -1\ncfs_monitor_time_100mb{path=\"$mountpath\"} $time_result" >> cfs_monitor.prom
         fi
-        rm -f "$mountpath"/cfs_monitor.performance."$KEY"
+        timeout $TIMESECsmall /usr/bin/rm -f  "$mountpath"/cfs_monitor.performance."$KEY"
     done
 }
 
