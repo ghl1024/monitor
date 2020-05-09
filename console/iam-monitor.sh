@@ -11,7 +11,6 @@ function check_prometheus
     cd /var/lib/node_exporter/textfile && touch iam_monitor.prom && chmod 755 iam_monitor.prom
 }
 
-#通过云存储的接口获取指定文件的内容并和预先定义的内容进行比对
 function check_result
 {
     cd /monitor/terraform
