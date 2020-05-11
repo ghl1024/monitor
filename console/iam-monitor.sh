@@ -14,9 +14,9 @@ function check_prometheus
 function check_result
 {
     cd /monitor/terraform
-    local start=$(date +%s%N)
+    local start=$(date +%s)
     result=$( timeout $TIMESEC terraform apply -auto-approve 2>&1|grep -c BucketAlreadyExists)
-    local end=$(date +%s%N)
+    local end=$(date +%s)
     local cost=$[$end-$start]
 
     if [ "$result" -eq 1 ];then
