@@ -16,8 +16,11 @@ function check_order
     cd /monitor/terraform-order && cp order order.tf
     
     #通过terraform发起创建云主机的操作，然后从返回的内容中grep是否有$mess_create的内容来判断创建是否成功
+    local start=$(date +%s%N)
     mess_create_result=$(timeout $TIMESEC terraform apply -auto-approve 2>&1|grep -c "$mess_create")
-
+    local end=$(date +%s%N)
+    local cost=$[$end-$start]
+    
     #当云主机创建成功后，因为IP地址是预设的，因此会通过ping命令二次确认是否真实创建完毕
     #之前是sleep 30秒然后Ping，但是这样耗时太久，所以放在了for循环中，减少常态的执行时间，因为每次超时大概需要2s，因此15次循环也到了30s
     for((i=1;i<=15;i++));
