@@ -33,7 +33,6 @@ function check_order
     #删除后，同样需要检查是否真的删除成功，因此还是需要Ping一下
     for((i=1;i<=15;i++));
     do
-        echo "forxxxxxxxxxxxx"
         ping -c 2 10.0.192.192
 
         if [ "$?" -ne 0 ];then
