@@ -47,10 +47,13 @@ function check_order
 
     #判断成功与否的方法：1，需要terraform返回内容是符合预期的，2，需要ping能够通 两者都OK才能视为创建成功
     if [ "$mess_create_result" -eq 1 -a "$create_status" -eq 0  -a "$destory_status" -eq 0 ];then
-         echo "create_ok"
+         cd /var/lib/node_exporter/textfile && echo -e "order_monitor_status 0\norder_read_cost $cost" > console_monitor.prom
     else
-         echo "create_error"
+         cd /var/lib/node_exporter/textfile && echo -e "order_monitor_status 1\norder_read_cost $cost" > console_monitor.prom
     fi
+    
+
+    
 }
 
 
