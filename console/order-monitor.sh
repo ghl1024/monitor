@@ -14,7 +14,7 @@ function check_order
 {
     #order文件是模板文件，但是取消后缀，在使用的时候，进行复制后使用
     cd /monitor/terraform-order && cp order order.tf
-    
+    timeout $TIMESEC terraform init
     #通过terraform发起创建云主机的操作，然后从返回的内容中grep是否有$mess_create的内容来判断创建是否成功
     local start=$(date +%s%N)
     mess_create_result=$(timeout $TIMESEC terraform apply -auto-approve 2>&1|grep -c "$mess_create")
