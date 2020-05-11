@@ -5,12 +5,16 @@ mess_destory="Apply complete! Resources: 0 added, 0 changed, 1 destroyed."
 
 function check_order
 {
+    #order文件是模板文件，但是取消后缀，在使用的时候，进行复制后使用
     cd /monitor/terraform-order && cp order order.tf
+    
+    #通过terraform发起创建云主机的操作，然后从返回的内容中grep是否有$mess_create的内容来判断创建是否成功
     mess_create_result=$(timeout $TIMESEC terraform apply -auto-approve 2>&1|grep -c "$mess_create")
 
-    for((i=1;i<=10;i++));
+    #当云主机创建成功后，因为IP地址是预设的，因此会通过ping命令二次确认是否真实创建完毕
+    #之前是sleep 30秒然后Ping，但是这样耗时太久，所以放在了for循环中，减少常态的执行时间，因为每次超时大概需要2s，因此15次循环也到了30s
+    for((i=1;i<=15;i++));
     do
-        echo "forxxxxxxxxxxxx"
         ping -c 2 10.0.192.192
 
         if [ "$?" -eq 0 ];then
@@ -22,11 +26,12 @@ function check_order
         sleep 2
     done
 
-
+    #创建完毕检查后，就可以进行销毁了，因此需要删除tf文件
     cd /monitor/terraform-order && rm -f order.tf
     mess_destory_result=$(timeout $TIMESEC terraform apply -auto-approve 2>&1|grep -c "$mess_destory")
 
-    for((i=1;i<=10;i++));
+    #删除后，同样需要检查是否真的删除成功，因此还是需要Ping一下
+    for((i=1;i<=15;i++));
     do
         echo "forxxxxxxxxxxxx"
         ping -c 2 10.0.192.192
@@ -40,7 +45,8 @@ function check_order
         sleep 2
     done
 
-    if [ "$mess_create_result" -eq 1 -a "$create_status" -eq 0  ];then
+    #判断成功与否的方法：1，需要terraform返回内容是符合预期的，2，需要ping能够通 两者都OK才能视为创建成功
+    if [ "$mess_create_result" -eq 1 -a "$create_status" -eq 0  -a "$destory_status" -eq 0 ];then
          echo "create_ok"
     else
          echo "create_error"
