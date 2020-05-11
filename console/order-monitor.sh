@@ -1,5 +1,6 @@
 #!/bin/bash
 readonly TIMESEC="200"
+readonly SERVER="10.0.192.192"
 mess_create="Apply complete! Resources: 1 added, 0 changed, 0 destroyed."
 mess_destory="Apply complete! Resources: 0 added, 0 changed, 1 destroyed."
 
@@ -15,7 +16,7 @@ function check_order
     #之前是sleep 30秒然后Ping，但是这样耗时太久，所以放在了for循环中，减少常态的执行时间，因为每次超时大概需要2s，因此15次循环也到了30s
     for((i=1;i<=15;i++));
     do
-        ping -c 2 10.0.192.192
+        ping -c 2 $SERVER
 
         if [ "$?" -eq 0 ];then
              create_status=0
@@ -33,7 +34,7 @@ function check_order
     #删除后，同样需要检查是否真的删除成功，因此还是需要Ping一下
     for((i=1;i<=15;i++));
     do
-        ping -c 2 10.0.192.192
+        ping -c 2 $SERVER
 
         if [ "$?" -ne 0 ];then
              destory_status=0
