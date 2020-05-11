@@ -4,6 +4,12 @@ readonly SERVER="10.0.192.192"
 mess_create="Apply complete! Resources: 1 added, 0 changed, 0 destroyed."
 mess_destory="Apply complete! Resources: 0 added, 0 changed, 1 destroyed."
 
+function check_prometheus
+{
+    mkdir -p  /var/lib/node_exporter/textfile
+    cd /var/lib/node_exporter/textfile && touch order_monitor.prom && chmod 755 order_monitor.prom
+}
+
 function check_order
 {
     #order文件是模板文件，但是取消后缀，在使用的时候，进行复制后使用
@@ -47,9 +53,9 @@ function check_order
 
     #判断成功与否的方法：1，需要terraform返回内容是符合预期的，2，需要ping能够通 两者都OK才能视为创建成功
     if [ "$mess_create_result" -eq 1 -a "$create_status" -eq 0  -a "$destory_status" -eq 0 ];then
-         cd /var/lib/node_exporter/textfile && echo -e "order_monitor_status 0\norder_read_cost $cost" > console_monitor.prom
+         cd /var/lib/node_exporter/textfile && echo -e "order_monitor_status 0\norder_read_cost $cost" > order_monitor.prom
     else
-         cd /var/lib/node_exporter/textfile && echo -e "order_monitor_status 1\norder_read_cost $cost" > console_monitor.prom
+         cd /var/lib/node_exporter/textfile && echo -e "order_monitor_status 1\norder_read_cost $cost" > order_monitor.prom
     fi
     
 
