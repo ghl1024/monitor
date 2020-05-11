@@ -11,6 +11,7 @@ function check_prometheus
     cd /var/lib/node_exporter/textfile && touch iam_monitor.prom && chmod 755 iam_monitor.prom
 }
 
+#通过terraform创建一个S3的bucket，来间接验证IAM的可用性，当然会受到S3可用性的影响
 function check_result
 {
     cd /monitor/terraform
