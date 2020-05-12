@@ -68,6 +68,7 @@ function check_order
 
 function main
 {
+    check_prometheus
     check_order
 }
 
