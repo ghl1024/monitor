@@ -6,7 +6,7 @@
 readonly Domainlist=(www.baidu.com www.qq.com www.kuaishou.com www.toutiao.com)
 
 #定义的是命令执行的超时时间
-readonly TIMESEC="10"
+readonly TIMESEC="5"
 
 readonly COMMAND="/usr/bin/curl"
 
