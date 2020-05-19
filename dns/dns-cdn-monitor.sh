@@ -28,7 +28,7 @@ function check_result
 {   
     for i in ${Domainlist[@]};do
         local start=$(date +%s%N)
-        result=$(timeout $TIMESEC $COMMAND $DOMAIN @"$i" +short|head -n 1|cut -d "." -f4)
+        result=$(timeout $TIMESEC $COMMAND $DOMAIN @"$i" +short|grep -v c|head -n 1|cut -d "." -f4)
         local end=$(date +%s%N)
         local timecost=$[$end-$start]
 
