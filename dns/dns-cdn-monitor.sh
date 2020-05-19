@@ -31,14 +31,8 @@ function check_result
     delay_time=0
     delay_time_max=0
     
-    for NS in ${Domainlist[@]};do
-        
-	#将NS的域名解析为IP地址，并逐个请求这些IP地址，从而覆盖同一个NS在不同区域的集群
-	nslist=$(timeout $TIMESEC $COMMAND $NS +short)
-	
-	for i in $nslist;do
-	    #直接将dig的结果获取的IP的最后一位拿出来
-	    result=$(timeout $TIMESEC $COMMAND $DOMAIN @"$i" +short|head -n 1|cut -d "." -f4)
+    for i in ${Domainlist[@]};do
+        result=$(timeout $TIMESEC $COMMAND $DOMAIN @"$i" +short|head -n 1|cut -d "." -f4)
 
 	    #如果result有结果且结果是数字的话，则进行下面的处理；避免result没有获取到结果就参与计算，导致误报
 	    if [ "$result" -ge 0 ];then
@@ -61,7 +55,7 @@ function check_result
 	        #如果result没有结果，那么意味着该ns有问题，因此在这里做一个错误响应的计数器
 	        count=$((count + 1 ))
 	    fi
-        done
+        
     done
     #最后，统计下所有异常的ns的数量，并进行统一输出，用于监控报警
     cost_time=$((delay_time / status_ok))
