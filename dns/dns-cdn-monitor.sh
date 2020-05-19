@@ -8,7 +8,7 @@ readonly COMMAND="dig"
 
 HOSTVALUE=$(date +%M|sed -r 's/0*([0-9])/\1/')
 
-Domainlist=(114.114.114.114 )
+Domainlist=(114.114.114.114 8.8.8.8 )
 
 #将输出结果默认赋值
 result="-1"
