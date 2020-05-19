@@ -30,7 +30,7 @@ function check_result
         local start=$(date +%s%N)
         result=$(timeout $TIMESEC $COMMAND $DOMAIN @"$i" +short|grep -v c|head -n 1|cut -d "." -f4)
         local end=$(date +%s%N)
-        local timecost=$[$end-$start]
+        local timecost=$((end-start))
 
 
 	    #如果result有结果且结果是数字的话，则进行下面的处理；避免result没有获取到结果就参与计算，导致误报
