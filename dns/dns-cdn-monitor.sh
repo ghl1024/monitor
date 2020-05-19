@@ -41,10 +41,12 @@ function check_result
 	        #对于跨周期的情况，实际时间会小于dns的结果，因此需要加一个60的周期进行补偿
 	            cost=$((HOSTVALUE + 60 - result ))
 	        fi
-		echo -e "dns_cdn_monitor_status_$i 0\ndns_cdn_monitor_cost_$i $cost\ndns_cdn_monitor_time $timecost" 
+		cd /var/lib/node_exporter/textfile
+		echo -e "dns_cdn_monitor_status_$i 0\ndns_cdn_monitor_cost_$i $cost\ndns_cdn_monitor_time $timecost" >> dns_cdn_monitor.pom
 
 	    else
-	        echo -e "dnsplus_monitor_status_$i -1\ndnsplus_monitor_cost_$i  -1" 
+	        cd /var/lib/node_exporter/textfile
+	        echo -e "dnsplus_monitor_status_$i -1\ndnsplus_monitor_cost_$i  -1"  >> dns_cdn_monitor.pom
 	    fi
     done
 }
