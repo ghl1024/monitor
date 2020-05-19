@@ -19,7 +19,7 @@ cost="0"
 function check_prometheus
 {
     mkdir -p  /var/lib/node_exporter/textfile
-    cd /var/lib/node_exporter/textfile && touch dnsplus_monitor.prom && chmod 755 dnsplus_monitor.prom && echo >dns_cdn_monitor.prom
+    cd /var/lib/node_exporter/textfile && touch dnsplus_monitor.prom && chmod 755 dnsplus_monitor.prom
 }
 
 #对获取的value和预先定义好的value进行对比，判断结果是否正常
@@ -41,11 +41,11 @@ function check_result
 	            cost=$((HOSTVALUE + 60 - result ))
 	        fi
 		cd /var/lib/node_exporter/textfile
-		echo -e "dns_cdn_monitor_status_$i 0\ndns_cdn_monitor_cost_$i $cost\ndns_cdn_monitor_time $timecost" >> dns_cdn_monitor.prom
+		echo -e "dns_cdn_monitor_status_$i 0\ndns_cdn_monitor_cost_$i $cost\ndns_cdn_monitor_time $timecost" > dns_cdn_monitor.prom
 
 	    else
 	        cd /var/lib/node_exporter/textfile
-	        echo -e "dnsplus_monitor_status_$i -1\ndnsplus_monitor_cost_$i  -1"  >> dns_cdn_monitor.prom
+	        echo -e "dnsplus_monitor_status_$i -1\ndnsplus_monitor_cost_$i  -1"  > dns_cdn_monitor.prom
 	    fi
     done
 }
