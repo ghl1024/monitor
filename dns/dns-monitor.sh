@@ -13,14 +13,6 @@ Domainlist=(ns1.jdgslb.com ns2.jdgslb.com ns3.jdgslb.com ns4.jdgslb.com ns5.jdgs
 #将输出结果默认赋值
 result="-1"
 
-#判断是否安装了dig工具，如果没有安装则先安装bind-utils包
-#判断是否提供了
-function check_tools
-{
-    if [ ! -f /usr/bin/dig ];then
-        nohup yum install -y bind-utils >/dev/null 2>&1
-    fi
-}
 
 #检查输出到prometheus的目录和文件是否存在，以及权限是否正确
 function check_prometheus
@@ -81,7 +73,6 @@ function check_result
 
 function main
 {
-    check_tools
     check_prometheus
     check_result  
 }
