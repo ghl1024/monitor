@@ -16,6 +16,10 @@ readonly TIMESEClarge="20"
 Mountlist=("/disk/cfs-generic-A" "/disk/cfs-generic-B" "/disk/ssd" "/disk/hdd")
 
 #文件名的随机后缀变量
+#随机文件有三个目的：
+#1）避免删除失败后，始终用过期的旧文件来进行可用性检测，这样没有意义
+#2）期望通过随机文件名，能够覆盖更多的datanode，避免单一的固定的文件名被分配到固定的datanode节点
+#3）可以满足多节点并行写入不冲突
 readonly KEY=$((RANDOM))
 
 #检查输出文件的目录，文件和权限
