@@ -8,6 +8,7 @@ readonly COMMAND="dig"
 
 HOSTVALUE=$(date +%M|sed -r 's/0*([0-9])/\1/')
 
+#为什么要监控权威DNS服务器？因为云解析产品对外主要是通过权威DNS服务器来提供一个托管域名的dns和ip的结果的
 Domainlist=(ns1.jdgslb.com ns2.jdgslb.com ns3.jdgslb.com ns4.jdgslb.com ns5.jdgslb.com ns6.jdgslb.com vip1.jdgslb.com vip2.jdgslb.com freens1.jdgslb.com freens2.jdgslb.com )
 
 #将输出结果默认赋值
