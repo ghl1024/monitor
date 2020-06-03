@@ -16,6 +16,7 @@ function check_prometheus
 
 #通过云存储的接口获取指定文件的内容并和预先定义的内容进行比对
 #为什么不考虑使用wget，wget和curl的区别是什么
+#需要对curl/wget的参数进行详细的理解和学习
 function check_result
 {
     local start=$(date +%s%N)
