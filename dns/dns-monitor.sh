@@ -6,6 +6,8 @@ readonly TIMESEC="3"
 
 readonly COMMAND="dig"
 
+#这样的监控方案是有一个假设前提的：所有服务器的时钟都是对齐的，没有不同步的
+
 HOSTVALUE=$(date +%M|sed -r 's/0*([0-9])/\1/')
 
 #为什么要监控权威DNS服务器？因为云解析产品对外主要是通过权威DNS服务器来提供一个托管域名的dns和ip的结果的
