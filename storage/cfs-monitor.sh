@@ -60,6 +60,7 @@ function check_result
 
 #通过云硬盘写入100MB文件来测试性能，目前测试，通过dd生成固定大小的文件，其md5是相同的，因此在该处只验证了md5，只要md5正确，就输出写入耗时
 #写入耗时部分，增加了纳秒统计，否则，无法进行精确比较date +%s%N，如果不需要纳秒级别统计，可以改为date +%s
+#需要注意dd命令，添加的conv=fsync，意思是说要确保文件写入到磁盘中，而非操作系统缓存，这个从写入耗时上看也不一样
 function check_performance
 {
     for mountpath in ${Mountlist[@]};do
