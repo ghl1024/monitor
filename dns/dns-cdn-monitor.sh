@@ -1,5 +1,5 @@
 #!/bin/bash
-readonly DOMAIN="monitor.site7x24.net.cn"
+readonly DOMAIN="monitor.monitor7x24.com.cn"
 
 #定义的是命令执行的超时时间
 readonly TIMESEC="3"
