@@ -19,8 +19,8 @@ check_status()
 
 login()
 {
-    user="root"
-    password="MXtVqY3UHzuqUUZUEmZWRYUh"
+    user="XXXXXXXXXXXXXXX"
+    password="XXXXXXXXXXXXXXX"
     expect -c "
     set host $1
     spawn ssh $user@$host
