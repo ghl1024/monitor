@@ -7,8 +7,8 @@ set -x
 
 readonly SERVER="pg-east2-10c0167e9bb5449c.rds.jdcloud.com"
 readonly PORT="5432"
-readonly PASSWORD="Chaosmonitor1"
-readonly USER="Chaos_monitor1"
+readonly PASSWORD="XXXXXXXXXXXXXXX"
+readonly USER="XXXXXXXXXXXXXXX"
 readonly DATABASE="monitor"
 readonly localhost=`/sbin/ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk '{print $2}'|tr -d "addr:"`
 export PGPASSWORD=$PASSWORD
