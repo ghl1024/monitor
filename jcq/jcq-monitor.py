@@ -79,8 +79,8 @@ def consume_message(access_key, secret_key, topic, consumerGroupId, size):
 
 
 def mysend():
-    access_key = "28D2D6E3A9E83013676002E980BA17DF"
-    secret_key = "F9683ABF2AC11DC82418ECE565EF5C30"
+    access_key = "XXXXXXXXXXXXXXX"
+    secret_key = "XXXXXXXXXXXXXXX"
     topic = "monitor_east"
     type_ = "NORMAL"
     messages = [ ]
@@ -97,10 +97,10 @@ def mysend():
     return len(res_dict["result"]["messageIds"])
 
 def myconsumer():
-    access_key = "28D2D6E3A9E83013676002E980BA17DF"
-    secret_key = "F9683ABF2AC11DC82418ECE565EF5C30"
+    access_key = "XXXXXXXXXXXXXXX"
+    secret_key = "XXXXXXXXXXXXXXX"
     topic = "monitor_east"
-    consumerGroupId = "chaos_jcq_consumer"
+    consumerGroupId = "XXXXXXXXXXXXXXX"
     size = 3
     resp = consume_message(access_key, secret_key, topic, consumerGroupId, size)
     return resp
