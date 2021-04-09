@@ -12,8 +12,8 @@ import (
 
 func initDNSClient() *DomainserviceClient{
 	// 申请到的AKSK, 下面的例子是以系统用户为例
-	accessKey := "3C6C2681B782DC654E09AA5A085AAC99"
-        secretKey := "A591AE3D4C22EA506224E3CFE06B7EA4"
+	accessKey := "XXXXXXXXXXXXXXX"
+        secretKey := "XXXXXXXXXXXXXXX"
 
 	credentials := NewCredentials(accessKey, secretKey)
 
