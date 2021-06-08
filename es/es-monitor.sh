@@ -6,9 +6,9 @@ set -x
 #默认情况下，仅需要修改SERVER、PORT、PASSWORD的值，即可执行脚本进行对es服务的可用性监控
 
 
-readonly SERVER="http://es-nlb-es-wp54diftud.jvessel-open-sh.jdcloud.com:9200"
-readonly USER="Chaos_monitor1"
-readonly DATABASE="monitor"
+readonly SERVER="XXXXX"
+readonly USER="XXXXX"
+readonly DATABASE="XXXX"
 readonly localhost=`/sbin/ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk '{print $2}'|tr -d "addr:"`
 KEY="shakespeare_"$localhost
 EXEC_PATH=$(pwd)
