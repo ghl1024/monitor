@@ -10,9 +10,9 @@ set -x
 #使用说明：
 #默认情况下，仅需要修改SERVER、PORT、PASSWORD的值，即可执行脚本进行对redis服务的可用性监控
 
-readonly SERVER="redis-8uyj8b5ymwt1-proxy-nlb.jvessel-open-sh.jdcloud.com"
+readonly SERVER="XXXXX"
 readonly PASSWORD="XXXXXXXXXXXXXXX"
-readonly PORT="6379"
+readonly PORT="XXXX"
 
 #key的定义要尽量复杂，避免和业务的key冲突了，所以增加了一个random的值
 KEY=$((RANDOM))
