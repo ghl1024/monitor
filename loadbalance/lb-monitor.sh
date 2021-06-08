@@ -4,7 +4,7 @@
 
 #定义的检查内容
 readonly VALUE="CentOS"
-readonly URL="http://114.67.64.243/"
+readonly URL="http://XXXX/"
 
 #定义的是命令执行的超时时间
 readonly TIMESEC="3"
