@@ -57,20 +57,20 @@ func ModifyRR(hostvalue string) {
         //currUTMinString := fmt.Sprintf("%d", minutes) 
         //hostvalue =   
        	rr := &UpdateRR{
-                DomainName: "site7x24.net.cn",
+                DomainName: "XXXXXX",
         	/* 主机记录  */
-        	HostRecord: "monitor",
+        	HostRecord: "XXXX",
         	/* 解析记录的值  */
         	HostValue: hostvalue,
         	/* 解析记录的生存时间  */
         	Ttl: 600,
         	/* 解析的类型  */
-        	Type: "A",
+        	Type: "X",
         	/* 解析线路的ID，请调用getViewTree接口获取解析线路的ID。  */
-        	ViewValue: 1,
+        	ViewValue: X,
     	} 
-        req := NewModifyResourceRecordRequest("cn-north-1", "9106", "3729042", rr )
-        //req := NewDescribeViewTreeRequest("cn-north-1", "9106", 0, 0)	
+        req := NewModifyResourceRecordRequest("XXXX", "XXXX", "XXXX", rr )
+        //req := NewDescribeViewTreeRequest("XXXX", "XXXX", XX, XX)	
 	// 做请求
 	resp, err := client.ModifyResourceRecord(req)
 	//resp, err := client.DescribeViewTree(req)
