@@ -4,13 +4,12 @@
 
 #使用说明：
 #默认情况下，仅需要修改SERVER、PORT、PASSWORD的值，即可执行脚本进行对mysql服务的可用性监控
-#mysql -h mysql-cn-east-2-01a7e0233e934844.rds.jdcloud.com -u Chaos_monitor1 -pChaos_monitor1 -D monitor -e "select count(*) from test"
 
 
-readonly SERVER="mysql-cn-east-2-01a7e0233e934844.rds.jdcloud.com"
-readonly PASSWORD="Chaos_monitor1"
-readonly USER="Chaos_monitor1"
-readonly DATABASE="monitor"
+readonly SERVER="XXXXX"
+readonly PASSWORD="XXXXX"
+readonly USER="XXXXXX"
+readonly DATABASE="XXXX"
 readonly localhost=`/sbin/ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk '{print $2}'|tr -d "addr:"`
 
 #key的定义要尽量复杂，避免和业务的key冲突了
