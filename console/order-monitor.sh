@@ -1,6 +1,6 @@
 #!/bin/bash
 readonly TIMESEC="200"
-readonly SERVER="10.0.192.192"
+readonly SERVER="XXXX"
 mess_create="Apply complete! Resources: 1 added, 0 changed, 0 destroyed."
 mess_destory="Apply complete! Resources: 0 added, 0 changed, 1 destroyed."
 
