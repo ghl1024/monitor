@@ -28,8 +28,8 @@ insert_status="-1"
 select_status="-1"
 postgreSQL_status="-1"
 
-#psql -h pg-cast2-10c0167e9bb5449c.rds.jdcloud.com -p5432 -UChaos_monitor1  -dmonitor -f psql_create_db.sql
-#psql -h pg-cast2-10c0167e9bb5449c.rds.jdcloud.com -p5432 -UChaos_monitor1  -dmonitor -f psql_create_table.sql
+#psql -h xxxx -pxxxx -UXXXXX  -dXXXX -f psql_create_db.sql
+#psql -h XXXXX -pXXXX -UXXXX  -dXXXXX -f psql_create_table.sql
 
 #判断是否安装了mysql-cli工具，如果没有安装则先安装完毕
 #安装mysql-cli工具，需要先安装epel源才可以
