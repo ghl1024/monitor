@@ -5,8 +5,8 @@ set -x
 #使用说明：
 #默认情况下，仅需要修改SERVER、PORT、PASSWORD的值，即可执行脚本进行对mysql服务的可用性监控
 
-readonly SERVER="pg-east2-10c0167e9bb5449c.rds.jdcloud.com"
-readonly PORT="5432"
+readonly SERVER="XXXXX"
+readonly PORT="XXXX"
 readonly PASSWORD="XXXXXXXXXXXXXXX"
 readonly USER="XXXXXXXXXXXXXXX"
 readonly DATABASE="monitor"
