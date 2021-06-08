@@ -1,7 +1,7 @@
 #!/bin/bash
 #定义的是命令执行的超时时间
 readonly TIMESEC="30"
-readonly URL="http://chaos-monitor.s3.cn-north-1.jdcloud-oss.com/5g-unlocks-a-world-of-opportunities-cn.pdf"
+readonly URL="XXXX"
 #将输出结果默认赋值
 result="-1"
 s3_monitor_status="-1"
