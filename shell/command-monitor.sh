@@ -2,7 +2,7 @@
 
 STATUS=-1
 
-HOSTS=('10.0.0.71' '10.0.0.72')
+HOSTS=('XX.X.X.X' 'X.X.X.X')
 CMDS=('ls ~','touch aaa','mv aaa bbb','cat bbb','ps -elf','lsof -a', 'netstat -anp')
 
 prepare()
