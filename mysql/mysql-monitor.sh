@@ -80,13 +80,13 @@ function main
 {  
     content=""
     check_tools
-    metric="mysql_monitor_insert{target=\"$SERVER\",region=\"cn-east-2\"}"
+    metric="mysql_monitor_insert{target=\"$SERVER\",region=\"XXXX\"}"
     local start=$(date +%s%N)
     insert_status=$(mysql_insert)
     local end=$(date +%s%N)
     local cost=$[$end-$start]
     #insert_status=$(check_result)
-    content="$content$metric $insert_status\nmysql_insert_cost{target=\"$SERVER\",region=\"cn-east-2\"} $cost\n"
+    content="$content$metric $insert_status\nmysql_insert_cost{target=\"$SERVER\",region=\"XXXX\"} $cost\n"
     
     metric="mysql_monitor_select{target=\"$SERVER\",region=\"cn-east-2\"}"
     local start=$(date +%s%N)
@@ -94,9 +94,9 @@ function main
     local end=$(date +%s%N)
     local cost=$[$end-$start]
     select_status=$(check_result $select_status)
-    content="$content$metric $select_status\nmysql_select_cost{target=\"$SERVER\",region=\"cn-east-2\"} $cost\n"
+    content="$content$metric $select_status\nmysql_select_cost{target=\"$SERVER\",region=\"XXXX\"} $cost\n"
     
-    metric="mysql_monitor_status{target=\"$SERVER\",region=\"cn-east-2\"}"
+    metric="mysql_monitor_status{target=\"$SERVER\",region=\"XXXX\"}"
     mysql_status=$insert_status&&$select_status
     content="$content$metric $mysql_status\n"
     cd /var/lib/node_exporter/textfile && echo -e $content > mysql_monitor.prom
