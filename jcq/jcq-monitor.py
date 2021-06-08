@@ -42,7 +42,7 @@ def get_signature(source, key):
     return signature.decode('utf-8').strip()
 
 def send_message(access_key, secret_key, topic, type_, messages):
-    url = 'http://jcq-shared-005-httpsrv-nlb-FI.jvessel-open-sh.jdcloud.com:8080/v1/messages'
+    url = 'XXXX/v1/messages'
     headers = {
         "Content-Type": "application/json",
         "accessKey": access_key,
@@ -60,7 +60,7 @@ def send_message(access_key, secret_key, topic, type_, messages):
     return resp.text
 
 def consume_message(access_key, secret_key, topic, consumerGroupId, size):
-    url = 'http://jcq-shared-005-httpsrv-nlb-FI.jvessel-open-sh.jdcloud.com:8080/v1/messages'
+    url = 'XXXXX/v1/messages'
     headers = {
         "Content-Type": "application/json",
         "accessKey": access_key,
@@ -81,8 +81,8 @@ def consume_message(access_key, secret_key, topic, consumerGroupId, size):
 def mysend():
     access_key = "XXXXXXXXXXXXXXX"
     secret_key = "XXXXXXXXXXXXXXX"
-    topic = "monitor_east"
-    type_ = "NORMAL"
+    topic = "XXX"
+    type_ = "XXX"
     messages = [ ]
     for i in range(10):
         messages.append({
